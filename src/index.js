@@ -16,24 +16,26 @@ const starterRecipies = {
     'Stir Fry': {
         'Onion': '1',
         'Garlic': '1 handfull',
-        'Rice': '1 cup'
+        'Rice': '1 jup'
     }
 }
 
-function getChildren(obj) {
+function getRecipies(obj) {
     let recipies = [];
     for (let rec in obj) {
         if (obj.hasOwnProperty(rec)) {
             let list = [];
-            for (let ing in obj[rec]) {
-                list.push(<li>{ing}</li>)
+            for (let ingr in obj[rec]) {
+                let item = ingr + '\t-\t' + obj[rec][ingr];
+                list.push(<li key={ingr}>{item}</li>)
             }
-            recipies.push(<Recipe name={rec} ingredients={list} />)
+            recipies.push(<Recipe key={rec} name={rec} ingredients={list} />)
         }
     }
     return <div>{recipies}</div>
 }
 
-let recipies = getChildren(starterRecipies)
-ReactDOM.render(<Recipe name="Potato" ingredients={recipies} />, document.getElementById('root'))
+
+let recipies = getRecipies(starterRecipies)
+ReactDOM.render(recipies, document.getElementById('root'))
 
