@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Recipe from './Recipe';
 
-const starterRecipies = {
+const starterRecipes = {
     'Jacket Potato': {
         'Potato': '1',
         'Cheese': '1 handfull'
@@ -35,7 +35,20 @@ function getRecipies(obj) {
     return <div>{recipies}</div>
 }
 
+function retrieveFromStorage() {
+    if (typeof(Storage) !== 'undefined') {
+        let data = window.localStorage.getItem('Recipes');
+        if (data) {
+            let recipes = getRecipies(data);
+        } else { // Use default recipies for first time users
+            let starters = JSON.stringify(starterRecipes);
+            window.localStorage.setItem('Recipes', starters);
+        }
+        return getRecipies(starterRecipes)
+    } else {
+        // No support for web storage.
+    }
+}
 
-let recipies = getRecipies(starterRecipies)
-ReactDOM.render(recipies, document.getElementById('root'))
+ReactDOM.render(retrieveFromStorage(), document.getElementById('root'))
 
