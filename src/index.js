@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Recipe from './Recipe';
+import App from './App';
 
 const starterRecipes = {
     'Jacket Potato': {
@@ -20,36 +20,21 @@ const starterRecipes = {
     }
 }
 
-function getRecipies(obj) {
-    let recipies = [];
-    for (let rec in obj) {
-        if (obj.hasOwnProperty(rec)) {
-            let list = [];
-            for (let ingr in obj[rec]) {
-                let item = ingr + '\t-\t' + obj[rec][ingr];
-                list.push(<li key={ingr}>{item}</li>)
-            }
-            recipies.push(<Recipe key={rec} name={rec} ingredients={list} />)
-        }
-    }
-    return <div>{recipies}</div>
-}
 
 function retrieveFromStorage() {
     if (typeof(Storage) !== 'undefined') {
         let data = window.localStorage.getItem('Recipes');
         if (data) {
-            let recipes = getRecipies(JSON.parse(data));
-            return recipes;
+            return JSON.parse(data);
         } else { // Use default recipies for first time users
             let starters = JSON.stringify(starterRecipes);
             window.localStorage.setItem('Recipes', starters);
-            return getRecipies(starters);
+            return starters;
         }
     } else {
         // No support for web storage.
     }
 }
-
-ReactDOM.render(retrieveFromStorage(), document.getElementById('root'))
+let recipes = retrieveFromStorage();
+ReactDOM.render(<App data={recipes} />, document.getElementById('root'))
 
