@@ -39,12 +39,13 @@ function retrieveFromStorage() {
     if (typeof(Storage) !== 'undefined') {
         let data = window.localStorage.getItem('Recipes');
         if (data) {
-            let recipes = getRecipies(data);
+            let recipes = getRecipies(JSON.parse(data));
+            return recipes;
         } else { // Use default recipies for first time users
             let starters = JSON.stringify(starterRecipes);
             window.localStorage.setItem('Recipes', starters);
+            return getRecipies(starters);
         }
-        return getRecipies(starterRecipes)
     } else {
         // No support for web storage.
     }
