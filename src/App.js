@@ -2,6 +2,10 @@ import React from 'react';
 import Recipe from './Recipe';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.dataObj = this.props.data;
+  }
   render() {
       let recipies = [];
       for (let rec in this.props.data) {
@@ -14,7 +18,7 @@ class App extends React.Component {
               recipies.push(<Recipe key={rec} name={rec} ingredients={list} />)
           }
       }
-      return <div>{recipies}</div>
+      return recipies
   }
 }
 
