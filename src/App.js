@@ -5,10 +5,11 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.dataObj = this.props.data;
+        this.modifyIngredients = this.modifyIngredients.bind(this);
     }
 
-    modifyIngredients(name, ingr) {
-        console.log('Change to  ' + name + ' ' + ingr);
+    modifyIngredients(recipe, ingr) {
+        console.log('Change to  ' + recipe + ' : ' + ingr);
     }
 
     render() {
