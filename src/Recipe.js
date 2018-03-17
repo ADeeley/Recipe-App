@@ -21,12 +21,6 @@ class Input extends React.Component {
     render() {
         if (this.props.display) {
         return (
-            /*
-            <div>
-                <input defaultValue={String(this.props.ingredients)}></input>
-                <button onClick={this.props.callback}>Submit</button>
-            </div>
-            */
            <form onSubmit={this.handleSubmit}>
                 <input 
                     type="text" 
