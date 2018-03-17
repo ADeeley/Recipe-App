@@ -1,41 +1,6 @@
 import React from 'react';
 import './Recipe.css';
-
-class Input extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {value: String(this.props.ingredients)}
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChange(e) {
-        this.setState({value: e.target.value})
-        console.log(this.state.value)
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-        this.props.callback(this.props.name, this.state.value.split(','))
-    }
-
-    render() {
-        if (this.props.display) {
-        return (
-           <form onSubmit={this.handleSubmit}>
-                <input 
-                    type="text" 
-                    defaultValue={String(this.props.ingredients)}
-                    onChange={this.handleChange}
-                />
-                <input type="submit" value="Submit" />
-           </form>
-        )
-        } else {
-            return null;
-        }
-    }
-}
+import Input from './Input';
 
 class Recipe extends React.Component {
     constructor(props) {
