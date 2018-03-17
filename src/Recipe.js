@@ -15,7 +15,7 @@ class Input extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.callback(this.props.name, this.state.value)
+        this.props.callback(this.props.name, this.state.value.split(','))
     }
 
     render() {
