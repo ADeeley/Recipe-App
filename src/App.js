@@ -57,6 +57,7 @@ class App extends React.Component {
         this.modifyIngredients = this.modifyIngredients.bind(this);
         this.toggleEditMode = this.toggleEditMode.bind(this);
         this.addRecipe = this.addRecipe.bind(this);
+        this.deleteRecipe = this.deleteRecipe.bind(this);
     }
 
     toggleEditMode() {
@@ -78,6 +79,14 @@ class App extends React.Component {
         console.log('Adding ' + name + ' with ' + ingr);
         this.dataObj[name] = ingr;
         this.setState({'recipes': this.dataObj});
+        this.updateBrowserStorage(this.dataObj);
+    }
+
+    deleteRecipe(name) {
+        console.log('deleting ' + name);
+        delete this.dataObj[name];
+        this.setState({'recipes': this.dataObj});
+        this.updateBrowserStorage(this.dataObj);
     }
 
     render() {
@@ -91,6 +100,7 @@ class App extends React.Component {
                         name={rec} 
                         ingredients={currentRecipe} 
                         callback={this.modifyIngredients} 
+                        deleteCallback={this.deleteRecipe}
                     />
                 )                
             }

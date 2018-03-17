@@ -41,11 +41,17 @@ class Recipe extends React.Component {
         super(props);
         this.state = {editMode: false};
         this.toggleEditMode = this.toggleEditMode.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     toggleEditMode() {
         this.setState({editMode: !this.state.editMode})
     }
+
+    handleDelete() {
+        this.props.deleteCallback(this.props.name)
+    }
+
     render() {
         let ingr = this.props.ingredients.map((el) => <li key={el}>{el}</li>)
         return (
@@ -59,7 +65,7 @@ class Recipe extends React.Component {
                     callback={this.props.callback}
                 />
                 <button onClick={this.toggleEditMode}>Edit</button>
-                <button>Delete</button>
+                <button onClick={this.handleDelete}>Delete</button>
             </div>
         )
     }
