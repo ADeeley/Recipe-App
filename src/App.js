@@ -6,14 +6,23 @@ class App extends React.Component {
         super(props);
         this.dataObj = this.props.data;
     }
+
+    modifyIngredients(name, ingr) {
+        console.log('Change to  ' + name + ' ' + ingr);
+    }
+
     render() {
         let elements = [];
         for (let rec in this.props.data) {
             if (this.props.data.hasOwnProperty(rec)) {
                 let currentRecipe = this.props.data[rec];
-                let ingr = currentRecipe.map((el) => <li>{el}</li>)
                 elements.push(
-                    <Recipe name={rec} ingredients={ingr} />
+                    <Recipe 
+                        key={rec}
+                        name={rec} 
+                        ingredients={currentRecipe} 
+                        callback={this.modifyIngredients} 
+                    />
                 )                
             }
         }
