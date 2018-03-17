@@ -9,10 +9,15 @@ class App extends React.Component {
         this.modifyIngredients = this.modifyIngredients.bind(this);
     }
 
+    updateBrowserStorage(obj) {
+        localStorage.setItem('recipes', JSON.stringify(obj));
+    }
+
     modifyIngredients(recipe, ingr) {
         console.log('Change to  ' + recipe + ' : ' + ingr);
         this.dataObj[recipe] = ingr;
         this.setState({'recipes': this.dataObj});
+        this.updateBrowserStorage(this.dataObj);
         console.log(this.dataObj)
     }
 
