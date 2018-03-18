@@ -1,6 +1,7 @@
 import React from 'react';
 import Recipe from './Recipe';
 import Input from './Input';
+import nameOrder from './utilities';
 
 
 class App extends React.Component {
@@ -25,7 +26,6 @@ class App extends React.Component {
     }
 
     modifyRecipes(existingName, name, ingr) {
-        console.log(existingName + ' : ' + name)
         if (existingName && existingName !== name) {
             delete this.dataObj[existingName];
         }
@@ -56,6 +56,8 @@ class App extends React.Component {
                 )                
             }
         }
+        console.log(elements[0].props.name)
+        elements.sort(nameOrder);
         return (
             <div>
                 {elements}
