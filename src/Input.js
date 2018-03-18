@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 
 class Input extends React.Component {
     constructor(props) {
@@ -27,8 +28,9 @@ class Input extends React.Component {
     render() {
         if (this.props.display) {
         return (
-           <form onSubmit={this.handleSubmit}>
+           <form className="input-form" onSubmit={this.handleSubmit}>
                 Name: <input 
+                    className="input-box"
                     type="text" 
                     onChange={this.handleNameChange}
                     defaultValue={
@@ -37,6 +39,7 @@ class Input extends React.Component {
                     }
                 /> 
                 Ingr: <input 
+                    className="input-box"
                     type="text" 
                     onChange={this.handleValueChange}
                     defaultValue={
@@ -44,7 +47,7 @@ class Input extends React.Component {
                             String(this.props.ingredients) : ''
                     }
                 />
-                <input type="submit" value="Submit" />
+                <input className="btn btn-primary" type="submit" value="Submit" />
            </form>
         )
         } else {

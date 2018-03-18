@@ -1,5 +1,6 @@
 import React from 'react';
 import './Recipe.css';
+import './App.css';
 import Input from './Input';
 
 class Recipe extends React.Component {
@@ -34,15 +35,16 @@ class Recipe extends React.Component {
             <div>
                 <h3><a onClick={this.toggleIngr}>{this.props.name}</a></h3>
                 <div ref="ingr" className="hidden">
+                    <h4 className="light">Ingredients:</h4>
                     <ul >{ingr}</ul>
+                    <button className="btn btn-outline-primary" onClick={this.toggleEditMode}>Edit</button>
+                    <button className="btn btn-danger" onClick={this.handleDelete}>Delete</button>
                     <Input 
                         name={this.props.name}
                         display={this.state.editMode}
                         ingredients={this.props.ingredients}
                         callback={this.props.callback}
                     />
-                    <button onClick={this.toggleEditMode}>Edit</button>
-                    <button onClick={this.handleDelete}>Delete</button>
                 </div>
             </div>
         )

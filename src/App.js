@@ -2,6 +2,7 @@ import React from 'react';
 import Recipe from './Recipe';
 import Input from './Input';
 import nameOrder from './utilities';
+import './App.css';
 
 
 class App extends React.Component {
@@ -62,7 +63,7 @@ class App extends React.Component {
             <div>
                 {elements}
                 <hr />
-                <button onClick={this.toggleEditMode}>Add Recipe</button>
+                <button className="btn btn-primary" onClick={this.toggleEditMode}>Add Recipe</button>
                 <Input 
                     display={this.state.editMode} 
                     callback={this.modifyRecipes}
