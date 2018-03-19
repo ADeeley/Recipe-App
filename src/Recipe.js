@@ -33,12 +33,12 @@ class Recipe extends React.Component {
         let ingr = this.props.ingredients.map((el) => <li key={el}>{el}</li>)
         return (
             <div>
-                <h3><a onClick={this.toggleIngr}>{this.props.name}</a></h3>
+                <h3 className="left-border"><a onClick={this.toggleIngr}>{this.props.name}</a></h3>
                 <div ref="ingr" className="hidden">
                     <h4 className="light">Ingredients:</h4>
                     <ul >{ingr}</ul>
                     <button className="btn btn-outline-primary" onClick={this.toggleEditMode}>Edit</button>
-                    <button className="btn btn-danger" onClick={this.handleDelete}>Delete</button>
+                    <button className="btn btn-outline-danger" onClick={this.handleDelete}>Delete</button>
                     <Input 
                         name={this.props.name}
                         display={this.state.editMode}

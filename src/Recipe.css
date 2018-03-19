@@ -4,4 +4,9 @@
 .hidden {
   display: none; }
 
+.left-border {
+  border-left: 5px solid grey;
+  padding-left: 5px;
+}
+
 /*# sourceMappingURL=Recipe.css.map */
